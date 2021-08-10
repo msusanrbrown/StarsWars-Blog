@@ -1,4 +1,5 @@
 import React from "react";
+import { planetsImgs } from "../component/images";
 
 import { useParams } from "react-router-dom";
 
@@ -21,7 +22,12 @@ export function PlanetsIndividual() {
 	return (
 		<div>
 			<div className="card">
-				<img src="..." className="rounded float-left" alt="..." />
+				<img
+					src={planetsImgs["planets_" + params.id]}
+					className="rounded mx-auto"
+					alt="..."
+					style={{ width: 500, margin: 0 }}
+				/>
 				<p>{extra !== null ? extra.description : null}</p>
 			</div>
 			<table className="table">

@@ -1,8 +1,9 @@
 import React from "react";
+import { peopleImgs } from "../component/images";
 
 import { useParams } from "react-router-dom";
 
-export function PeoplePageIndividual() {
+export function PeoplePageIndividual(props) {
 	const params = useParams();
 
 	const [people, setPeople] = React.useState(null);
@@ -22,7 +23,12 @@ export function PeoplePageIndividual() {
 	return (
 		<div>
 			<div className="card">
-				<img src="..." className="rounded float-left" alt="..." />
+				<img
+					src={peopleImgs["people_" + params.id]}
+					className="rounded mx-auto"
+					alt="..."
+					style={{ width: 300, margin: 0 }}
+				/>
 				<p>{extra !== null ? extra.description : null}</p>
 			</div>
 			<table className="table">

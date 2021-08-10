@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { Favorites } from "../views/favorites";
+import { Link } from "react-router-dom";
+import { planetsImgs } from "./images";
 
 export function CardPlanet(props) {
 	const [planet, setPlanet] = React.useState(null);
@@ -17,7 +19,7 @@ export function CardPlanet(props) {
 
 	return (
 		<div className="card col">
-			<img src="" className="card-img-top" />
+			<img src={planetsImgs["planets_" + props.uid]} className="card-img-top" style={{ width: 200 }} />
 			<div className="card-body">
 				<h5 className="card-title">{props.name}</h5>
 				<p className="card-text">
@@ -29,9 +31,9 @@ export function CardPlanet(props) {
 					{planet !== null ? planet.terrain : null}
 				</p>
 
-				<a href={"/planets/" + props.uid} className="btn btn-primary">
-					<button>Learn More</button>
-				</a>
+				<Link to={"/planets/" + props.uid} className="btn btn-primary">
+					Learn More
+				</Link>
 				{f.favorites.includes(props.name) ? (
 					<button
 						onClick={() => {

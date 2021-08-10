@@ -1,28 +1,20 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { Favorites } from "../views/favorites";
+import { Link } from "react-router-dom";
+import { vehiclesImgs } from "./images";
 
 export function CardVehicle(props) {
-	//const [vehicle, setVehicle] = React.useState(null);
 	const f = React.useContext(Favorites);
-
-	// React.useEffect(() => {
-	// 	fetch(`https://www.swapi.tech/api/vehicles/${props.uid}`)
-	// 		.then(res => res.json())
-	// 		.then(data => {
-	// 			setVehicle(data.result.properties);
-	// 		})
-	// 		.catch(err => console.error(err));
-	// }, []);
 
 	return (
 		<div className="card col">
-			<img src="" className="card-img-top" />
+			<img src={vehiclesImgs["vehicles_" + props.uid]} className="card-img-top" style={{ width: 200 }} />
 			<div className="card-body">
 				<h5 className="card-title">{props.name}</h5>
-				<a href={"/vehicles/" + props.uid} className="btn btn-primary">
+				<Link to={"/vehicles/" + props.uid} className="btn btn-primary">
 					Learn More
-				</a>
+				</Link>
 				{f.favorites.includes(props.name) ? (
 					<button
 						onClick={() => {
